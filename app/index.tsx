@@ -47,7 +47,7 @@ export default function App()
                 </FlipCard>
             </View>
 
-            <View className="flex flex-row p-4 gap-4 rounded-xl bg-red-500 text-orange-800">
+            <View className="flex flex-row p-4 gap-4 text-xl 2xl:text-2xl rounded-xl bg-red-500 text-orange-800">
                 <View className="flex-1 p-4 bg-orange-400 rounded-xl">
                     <FontAwesomeIcon icon={faClockRotateLeft} />
                 </View>
