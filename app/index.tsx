@@ -33,17 +33,17 @@ export default function App()
                 <FlipCard tilt className="w-[50%] h-[70%] drop-shadow-2xl">
                 {[
                     <View className="flex-1 p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
-                        <View className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
+                        <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
                             { joke.details.field }
-                        </View>
+                        </Text>
                         <Text className="text-6xl 2xl:text-6xl">🤔</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.question}</Text>
                         <Text className="text-white text-lg 2xl:text-xl">Clique para ver a resposta</Text>
                     </View>,
                     <View className="flex-1 p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly border-orange-500 border-2 select-none">
-                        <View className="rounded-full bg-gradient-to-br from-red-400 to-red-600 p-2 absolute text-white bottom-4 left-4 border-red-500 border-2 text-lg 2xl:text-xl">
+                        <Text className="rounded-full bg-gradient-to-br from-red-400 to-red-600 p-2 absolute text-white bottom-4 left-4 border-red-500 border-2 text-lg 2xl:text-xl">
                             { joke.details.field }
-                        </View>
+                        </Text>
                         <Text className="text-6xl 2xl:text-6xl">😂</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.answer}</Text>
                         <Text className="text-white text-lg 2xl:text-xl">Clique para voltar</Text>
