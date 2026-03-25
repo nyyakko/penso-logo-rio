@@ -1,8 +1,8 @@
 import { Text, View } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClockRotateLeft, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 
 import FlipCard from "./Components/FlipCard";
+import Dock from "./Components/Dock";
 
 import "./global.css"
 
@@ -27,37 +27,36 @@ export default function App()
             <View className="inset-0 absolute bg-gradient-to-br from-red-500 to-red-800 brightness-[70%]" />
 
             <View className="flex-1 w-full items-center justify-evenly">
-                <View className="flex items-center">
+                <View className="flex items-center select-none">
                     <Text className="font-extrabold text-4xl 2xl:text-5xl text-white">Piada do Dia</Text>
                 </View>
-
-                <FlipCard tilt className="w-[50%] h-[70%]">
+                <FlipCard tilt className="w-[50%] h-[70%] drop-shadow-2xl">
                 {[
-                    <View className="flex-1 p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
+                    <View className="flex-1 p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
+                        <View className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
+                            { joke.details.field }
+                        </View>
                         <Text className="text-6xl 2xl:text-6xl">🤔</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.question}</Text>
-                        <Text className="text-white text-sm 2xl:text-xl">Clique para ver a resposta</Text>
+                        <Text className="text-white text-lg 2xl:text-xl">Clique para ver a resposta</Text>
                     </View>,
-                    <View className="flex-1 p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
+                    <View className="flex-1 p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly border-orange-500 border-2 select-none">
+                        <View className="rounded-full bg-gradient-to-br from-red-400 to-red-600 p-2 absolute text-white bottom-4 left-4 border-red-500 border-2 text-lg 2xl:text-xl">
+                            { joke.details.field }
+                        </View>
                         <Text className="text-6xl 2xl:text-6xl">😂</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.answer}</Text>
-                        <Text className="text-white text-sm 2xl:text-xl">Clique para voltar</Text>
+                        <Text className="text-white text-lg 2xl:text-xl">Clique para voltar</Text>
                     </View>
                 ]}
                 </FlipCard>
             </View>
 
-            <View className="flex flex-row p-4 gap-4 text-xl 2xl:text-2xl rounded-xl bg-red-500 text-orange-800">
-                <View className="flex-1 p-4 bg-orange-400 rounded-xl">
-                    <FontAwesomeIcon icon={faClockRotateLeft} />
-                </View>
-                <View className="flex-1 p-4 bg-orange-400 rounded-xl">
-                    <FontAwesomeIcon icon={faHeart} />
-                </View>
-                <View className="flex-1 p-4 bg-orange-400 rounded-xl">
-                    <FontAwesomeIcon icon={faShare} />
-                </View>
-            </View>
+            <Dock options={[
+                { icon: faClockRotateLeft, action: () => {} },
+                { icon: faHeart, action: () => {} },
+                { icon: faShare, action: () => {} }
+            ]}/>
         </View>
     );
 }
