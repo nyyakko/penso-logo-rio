@@ -57,7 +57,7 @@ export default function App()
             answer: "Porque ele acha que as provas são só sombras na caverna e a nota real está em outro plano.",
             details: {
                 field: "Metafísica",
-                article: "Plato's_theory_of_forms"
+                article: "theory_of_forms"
             }
         },
     ];
