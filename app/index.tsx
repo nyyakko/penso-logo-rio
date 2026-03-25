@@ -24,7 +24,7 @@ export default function App()
 
     return (
         <View className="flex-1 items-center justify-center p-4">
-            <View className="inset-0 absolute bg-gradient-to-br from-blue-500 to-blue-800 brightness-[70%]" />
+            <View className="inset-0 absolute bg-gradient-to-br from-red-500 to-red-800 brightness-[70%]" />
 
             <View className="flex-1 w-full items-center justify-evenly">
                 <View className="flex items-center">
@@ -33,12 +33,12 @@ export default function App()
 
                 <FlipCard tilt className="w-[50%] h-[70%]">
                 {[
-                    <View className="flex-1 p-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
+                    <View className="flex-1 p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
                         <Text className="text-6xl 2xl:text-6xl">🤔</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.question}</Text>
                         <Text className="text-white text-sm 2xl:text-xl">Clique para ver a resposta</Text>
                     </View>,
-                    <View className="flex-1 p-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
+                    <View className="flex-1 p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
                         <Text className="text-6xl 2xl:text-6xl">😂</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.answer}</Text>
                         <Text className="text-white text-sm 2xl:text-xl">Clique para voltar</Text>
@@ -47,14 +47,14 @@ export default function App()
                 </FlipCard>
             </View>
 
-            <View className="flex flex-row p-4 gap-4 rounded-xl bg-blue-500 text-yellow-800">
-                <View className="flex-1 p-4 bg-yellow-400 rounded-xl">
+            <View className="flex flex-row p-4 gap-4 rounded-xl bg-red-500 text-orange-800">
+                <View className="flex-1 p-4 bg-orange-400 rounded-xl">
                     <FontAwesomeIcon icon={faClockRotateLeft} />
                 </View>
-                <View className="flex-1 p-4 bg-yellow-400 rounded-xl">
+                <View className="flex-1 p-4 bg-orange-400 rounded-xl">
                     <FontAwesomeIcon icon={faHeart} />
                 </View>
-                <View className="flex-1 p-4 bg-yellow-400 rounded-xl">
+                <View className="flex-1 p-4 bg-orange-400 rounded-xl">
                     <FontAwesomeIcon icon={faShare} />
                 </View>
             </View>
