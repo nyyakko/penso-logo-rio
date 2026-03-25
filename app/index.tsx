@@ -1,34 +1,53 @@
-import { Button, Text, View } from "react-native";
-import { ReactNode } from "react";
+import { Text, View } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBullhorn, faChartLine, faChessKnight, faClockRotateLeft, faHeart, faIndustry, faShare, faWallet } from "@fortawesome/free-solid-svg-icons";
+import { faClockRotateLeft, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
+
+import FlipCard from "./Components/FlipCard";
 
 import "./global.css"
 
 export default function App()
 {
+    const jokes =
+    [
+        {
+            "question": "Por que o Platão não consegue passar em Filosofia?",
+            "answer": "Porque ele acha que as provas são só sombras na caverna e a nota real está em outro plano.",
+            "details": {
+                "field": "Metafísica",
+                "article": "Plato's_theory_of_forms"
+            }
+        },
+    ];
+
+    const joke = jokes[0];
+
     return (
         <View className="flex-1 items-center justify-center p-4">
             <View className="inset-0 absolute bg-gradient-to-br from-blue-500 to-blue-800 brightness-[70%]" />
 
             <View className="flex-1 w-full items-center justify-evenly">
                 <View className="flex items-center">
-                    <Text className="font-extrabold text-4xl text-white">Piada do Dia</Text>
-                    <Text className="text-lg text-white">{new Date().toLocaleString("pt-BR", {
-                        weekday: "long",
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric"
-                    })}</Text>
+                    <Text className="font-extrabold text-4xl 2xl:text-5xl text-white">Piada do Dia</Text>
                 </View>
-                <View className="flex w-[50%] h-[70%] p-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl items-center justify-evenly">
-                    <Text className="text-6xl">🤔</Text>
-                    <Text className="text-white text-center text-3xl">Por que Descartes não confia em elevadores?</Text>
-                    <Text className="text-sm text-white">Clique para ver a resposta</Text>
-                </View>
+
+                <FlipCard tilt className="w-[50%] h-[70%]">
+                {[
+                    <View className="flex-1 p-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
+                        <Text className="text-6xl 2xl:text-6xl">🤔</Text>
+                        <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.question}</Text>
+                        <Text className="text-white text-sm 2xl:text-xl">Clique para ver a resposta</Text>
+                    </View>,
+                    <View className="flex-1 p-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-3xl items-center justify-evenly drop-shadow-2xl">
+                        <Text className="text-6xl 2xl:text-6xl">😂</Text>
+                        <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.answer}</Text>
+                        <Text className="text-white text-sm 2xl:text-xl">Clique para voltar</Text>
+                    </View>
+                ]}
+                </FlipCard>
             </View>
 
-            <View className="flex flex-row p-4 gap-4 rounded-xl bg-blue-500">
+            <View className="flex flex-row p-4 gap-4 rounded-xl bg-blue-500 text-yellow-800">
                 <View className="flex-1 p-4 bg-yellow-400 rounded-xl">
                     <FontAwesomeIcon icon={faClockRotateLeft} />
                 </View>
