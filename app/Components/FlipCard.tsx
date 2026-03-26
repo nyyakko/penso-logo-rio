@@ -1,4 +1,4 @@
-import { easeOutElastic } from "../Utils/Easings";
+import { easeOutElastic } from "../Utils/easings";
 
 import { Pressable } from "react-native";
 import { ReactNode, useReducer } from "react";
