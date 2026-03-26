@@ -1,8 +1,10 @@
-import { Text, View } from "react-native";
 import { faClockRotateLeft, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
+import { Text, View } from "react-native";
+import { useAudioPlayer } from "expo-audio";
 
-import FlipCard from "./Components/FlipCard";
 import Dock from "./Components/Dock";
+import FlipCard from "./Components/FlipCard";
+import { getRandomSound } from "./Utils/soundEffects";
 
 import "./global.css"
 
@@ -19,12 +21,14 @@ type JokeOfTheDayProps = {
 
 function JokeOfTheDay({ joke }: JokeOfTheDayProps)
 {
+    const player = useAudioPlayer(getRandomSound());
+
     return (
         <View className="flex-1 w-full items-center justify-evenly">
             <View className="flex items-center select-none">
                 <Text className="font-extrabold text-4xl 2xl:text-5xl text-white">Piada do Dia</Text>
             </View>
-            <FlipCard tilt className="w-[50%] h-[70%] drop-shadow-2xl">
+            <FlipCard tilt className="w-[50%] h-[70%] drop-shadow-2xl" onFlip={() => player.play()}>
             {[
                 <View className="flex-1 p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
                     <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
