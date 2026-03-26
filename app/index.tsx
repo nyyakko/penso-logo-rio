@@ -8,18 +8,32 @@ import { getRandomSound } from "./Utils/soundEffects";
 
 import "./global.css"
 
-type JokeOfTheDayProps = {
-    joke: {
-        question: string;
-        answer: string;
-        details: {
-            field: string;
-            article: string;
-        }
-    };
+type Joke = {
+    question: string;
+    answer: string;
+    details: {
+        field: string;
+        article: string;
+    }
 };
 
-function JokeOfTheDay({ joke }: JokeOfTheDayProps)
+const JOKES = [
+    {
+        question: "Por que o Platão não consegue passar em Filosofia?",
+        answer: "Porque ele acha que as provas são só sombras na caverna e a nota real está em outro plano.",
+        details: {
+            field: "Metafísica",
+            article: "theory_of_forms"
+        }
+    },
+] as const;
+
+type JokeOfTheDayProps = {
+    joke: Joke;
+    onFavorite?: () => void;
+};
+
+function JokeOfTheDay({ joke, onFavorite }: JokeOfTheDayProps)
 {
     const player = useAudioPlayer(getRandomSound());
 
@@ -28,7 +42,7 @@ function JokeOfTheDay({ joke }: JokeOfTheDayProps)
             <View className="flex items-center select-none">
                 <Text className="font-extrabold text-4xl 2xl:text-5xl text-white">Piada do Dia</Text>
             </View>
-            <FlipCard tilt className="w-[50%] h-[70%] drop-shadow-2xl" onFlip={() => player.play()}>
+            <FlipCard tilt onFlip={() => player.play()} onFavorite={onFavorite} className="w-[50%] h-[70%] drop-shadow-2xl">
             {[
                 <View className="flex-1 p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
                     <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
@@ -54,19 +68,7 @@ function JokeOfTheDay({ joke }: JokeOfTheDayProps)
 
 export default function App()
 {
-    const jokes =
-    [
-        {
-            question: "Por que o Platão não consegue passar em Filosofia?",
-            answer: "Porque ele acha que as provas são só sombras na caverna e a nota real está em outro plano.",
-            details: {
-                field: "Metafísica",
-                article: "theory_of_forms"
-            }
-        },
-    ];
-
-    const joke = jokes[0];
+    const joke: Joke = JOKES[0];
 
     return (
         <View className="flex-1 items-center justify-center p-4">

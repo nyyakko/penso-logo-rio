@@ -1,18 +1,19 @@
-import { easeOutElastic } from "../Utils/easings";
-
 import { Pressable } from "react-native";
 import { ReactNode, useReducer } from "react";
 import { MotiView } from "moti";
 import Tilt from "react-parallax-tilt";
 
+import { easeOutElastic } from "../Utils/easings";
+
 type FlipCardProps = {
     children: ReactNode[];
     tilt?: boolean;
-    onFlip?: () => void;
     className?: string;
+    onFlip?: () => void;
+    onFavorite?: () => void;
 }
 
-export default function FlipCard({ children, tilt, onFlip, className }: FlipCardProps)
+export default function FlipCard({ children, tilt, className , onFlip, onFavorite }: FlipCardProps)
 {
     const [isRevealed, setRevealed] = useReducer((state) => !state, false);
     const [isPressed, setPressed] = useReducer((state) => !state, false);
@@ -24,6 +25,7 @@ export default function FlipCard({ children, tilt, onFlip, className }: FlipCard
                     setRevealed();
                     onFlip?.();
                 }}
+                onLongPress={onFavorite}
                 onPressIn={setPressed}
                 onPressOut={setPressed}
                 className="w-full h-full"
