@@ -40,7 +40,7 @@ function JokeOfTheDay({ joke, onFavorite }: JokeOfTheDayProps)
     return (
         <View className="flex-1 w-full items-center justify-evenly">
             <View className="flex items-center select-none">
-                <Text className="font-extrabold text-4xl 2xl:text-5xl text-white">Piada do Dia</Text>
+                <Text className="font-bold text-4xl 2xl:text-5xl text-white">Piada do Dia</Text>
             </View>
             <FlipCard tilt onFlip={() => player.play()} onFavorite={onFavorite} className="w-[50%] h-[70%] drop-shadow-2xl">
             {[
