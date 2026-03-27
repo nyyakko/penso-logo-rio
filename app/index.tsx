@@ -1,10 +1,12 @@
-import { faClockRotateLeft, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faClockRotateLeft, faHeart, faHome, faShare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Text, View } from "react-native";
 import { useAudioPlayer } from "expo-audio";
 import { useState } from "react";
 
 import Dock from "./Components/Dock";
 import FlipCard from "./Components/FlipCard";
+
 import { getRandomSound } from "./Utils/soundEffects";
 
 import "./global.css"
@@ -46,21 +48,31 @@ function JokeOfTheDay({ joke, onFavorite }: JokeOfTheDayProps)
             </View>
             <FlipCard tilt onFlip={() => player.play()} onFavorite={onFavorite} className="w-[50%] h-[70%] drop-shadow-2xl">
             {[
-                <View className="flex-1 p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
-                    <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
-                        { joke.details.field }
-                    </Text>
+                <View className="w-full h-full p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
+                    { joke.favorited &&
+                        <View className="absolute top-4 right-4 text-4xl">
+                            <FontAwesomeIcon color="red" icon={faHeart} />
+                        </View>
+                    }
                     <Text className="text-6xl 2xl:text-6xl">🤔</Text>
                     <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.question}</Text>
                     <Text className="text-white text-lg 2xl:text-xl">Clique para ver a resposta</Text>
-                </View>,
-                <View className="flex-1 p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly border-orange-500 border-2 select-none">
-                    <Text className="rounded-full bg-gradient-to-br from-red-400 to-red-600 p-2 absolute text-white bottom-4 left-4 border-red-500 border-2 text-lg 2xl:text-xl">
+                    <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
                         { joke.details.field }
                     </Text>
+                </View>,
+                <View className="w-full h-full p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly border-orange-500 border-2 select-none">
+                    { joke.favorited &&
+                        <View className="absolute top-4 right-4 text-4xl">
+                            <FontAwesomeIcon color="red" icon={faHeart} />
+                        </View>
+                    }
                     <Text className="text-6xl 2xl:text-6xl">😂</Text>
                     <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.answer}</Text>
                     <Text className="text-white text-lg 2xl:text-xl">Clique para voltar</Text>
+                    <Text className="rounded-full bg-gradient-to-br from-red-400 to-red-600 p-2 absolute text-white bottom-4 left-4 border-red-500 border-2 text-lg 2xl:text-xl">
+                        { joke.details.field }
+                    </Text>
                 </View>
             ]}
             </FlipCard>
@@ -90,20 +102,30 @@ function PreviousJokes({ jokes }: PreviousJokesProps)
                 <FlipCard tilt className="flex-1 drop-shadow-2xl">
                 {[
                     <View className="h-full p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
-                        <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
-                            { joke.details.field }
-                        </Text>
+                        { joke.favorited &&
+                            <View className="absolute top-4 right-4 text-4xl">
+                                <FontAwesomeIcon color="red" icon={faHeart} />
+                            </View>
+                        }
                         <Text className="text-6xl 2xl:text-6xl">🤔</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.question}</Text>
                         <Text className="text-white text-lg 2xl:text-xl">Clique para ver a resposta</Text>
-                    </View>,
-                    <View className="h-full p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly border-orange-500 border-2 select-none">
-                        <Text className="rounded-full bg-gradient-to-br from-red-400 to-red-600 p-2 absolute text-white bottom-4 left-4 border-red-500 border-2 text-lg 2xl:text-xl">
+                        <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 p-2 absolute text-white bottom-4 left-4 border-orange-500 border-2 text-lg 2xl:text-xl">
                             { joke.details.field }
                         </Text>
+                    </View>,
+                    <View className="h-full p-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl items-center justify-evenly border-orange-500 border-2 select-none">
+                        { joke.favorited &&
+                            <View className="absolute top-4 right-4 text-4xl">
+                                <FontAwesomeIcon color="red" icon={faHeart} />
+                            </View>
+                        }
                         <Text className="text-6xl 2xl:text-6xl">😂</Text>
                         <Text className="text-white text-center text-3xl 2xl:text-4xl">{joke.answer}</Text>
                         <Text className="text-white text-lg 2xl:text-xl">Clique para voltar</Text>
+                        <Text className="rounded-full bg-gradient-to-br from-red-400 to-red-600 p-2 absolute text-white bottom-4 left-4 border-red-500 border-2 text-lg 2xl:text-xl">
+                            { joke.details.field }
+                        </Text>
                     </View>
                 ]}
                 </FlipCard>
@@ -131,18 +153,25 @@ export default function App()
         return { ...joke, date };
     }));
 
-    const joke: Joke = jokes[0];
+    const [joke, setJoke] = useState<Joke>(jokes[0]);
+
+    const onFavorite = () => {
+        const favoritedJoke = { ...joke, favorited: !joke.favorited };
+        setJoke(favoritedJoke);
+        jokes[jokes.findIndex(joke => joke.date == favoritedJoke.date)] = favoritedJoke;
+        setJokes(jokes);
+    };
 
     return (
         <View className="flex-1 items-center justify-center p-4 gap-4">
             <View className="inset-0 absolute bg-gradient-to-br from-red-500 to-red-800 brightness-[70%]" />
 
-            { currentWindowIndex === 0 && <JokeOfTheDay joke={joke} />}
+            { currentWindowIndex === 0 && <JokeOfTheDay joke={joke} onFavorite={onFavorite} />}
             { currentWindowIndex === 1 && <PreviousJokes jokes={jokes} />}
 
             <Dock options={[
-                { icon: faClockRotateLeft, action: () => setWindowIndex(0) },
-                { icon: faHeart, action: () => setWindowIndex(1) },
+                { icon: faHome, action: () => setWindowIndex(0) },
+                { icon: faClockRotateLeft, action: () => setWindowIndex(1) },
                 { icon: faShare, action: () => setWindowIndex(2) }
             ]}/>
         </View>

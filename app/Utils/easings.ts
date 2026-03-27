@@ -7,3 +7,8 @@ export function easeOutElastic(x: number): number
       ? 1
       : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;
 }
+
+export function easeOutExpo(x: number): number
+{
+    return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+}
