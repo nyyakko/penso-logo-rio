@@ -122,9 +122,9 @@ function JokeOfTheDay({ joke, onFavorite }: JokeOfTheDayProps)
                     <Text className="text-white text-lg 2xl:text-xl">Clique para ver a resposta</Text>
                     <View className="flex-row absolute bottom-4 left-4 gap-2">
                     {
-                        joke.details.fields.map(field => {
+                        joke.details.fields.map((field, i) => {
                             return (
-                                <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white p-1 border-orange-500 border-2 2xl:text-lg">
+                                <Text key={i} className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white p-1 border-orange-500 border-2 2xl:text-lg">
                                     { field }
                                 </Text>
                             );
@@ -143,9 +143,9 @@ function JokeOfTheDay({ joke, onFavorite }: JokeOfTheDayProps)
                     <Text className="text-white text-lg 2xl:text-xl">Clique para voltar</Text>
                     <View className="flex-row absolute bottom-4 left-4 gap-2">
                     {
-                        joke.details.fields.map(field => {
+                        joke.details.fields.map((field, i) => {
                             return (
-                                <Text className="rounded-full bg-gradient-to-br from-red-400 to-red-600 text-white p-1 border-red-500 border-2 2xl:text-lg">
+                                <Text key={i} className="rounded-full bg-gradient-to-br from-red-400 to-red-600 text-white p-1 border-red-500 border-2 2xl:text-lg">
                                     { field }
                                 </Text>
                             );
@@ -191,9 +191,9 @@ function PreviousJokes({ jokes }: PreviousJokesProps)
                         <Text className="text-white text-lg 2xl:text-xl">Clique para ver a resposta</Text>
                         <View className="flex-row absolute bottom-4 left-4 gap-2">
                         {
-                            joke.details.fields.map(field => {
+                            joke.details.fields.map((field, i) => {
                                 return (
-                                    <Text className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white p-1 border-orange-500 border-2 2xl:text-lg">
+                                    <Text key={i} className="rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white p-1 border-orange-500 border-2 2xl:text-lg">
                                         { field }
                                     </Text>
                                 );
@@ -212,9 +212,9 @@ function PreviousJokes({ jokes }: PreviousJokesProps)
                         <Text className="text-white text-lg 2xl:text-xl">Clique para voltar</Text>
                         <View className="flex-row absolute bottom-4 left-4 gap-2">
                         {
-                            joke.details.fields.map(field => {
+                            joke.details.fields.map((field, i) => {
                                 return (
-                                    <Text className="rounded-full bg-gradient-to-br from-red-400 to-red-600 text-white p-1 border-red-500 border-2 2xl:text-lg">
+                                    <Text key={i} className="rounded-full bg-gradient-to-br from-red-400 to-red-600 text-white p-1 border-red-500 border-2 2xl:text-lg">
                                         { field }
                                     </Text>
                                 );
