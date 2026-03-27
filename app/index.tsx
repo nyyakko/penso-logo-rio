@@ -46,7 +46,7 @@ function JokeOfTheDay({ joke, onFavorite }: JokeOfTheDayProps)
             <View className="flex items-center select-none">
                 <Text className="font-bold text-4xl 2xl:text-5xl text-white">Piada do Dia</Text>
             </View>
-            <FlipCard tilt onFlip={() => player.play()} onFavorite={onFavorite} className="w-[50%] h-[70%] drop-shadow-2xl">
+            <FlipCard tilt onFlip={() => player.play() } onFavorite={onFavorite} className="w-[80%] lg:w-[50%] h-[70%] drop-shadow-2xl">
             {[
                 <View className="w-full h-full p-8 bg-gradient-to-br from-red-400 to-red-600 rounded-3xl items-center justify-evenly border-red-500 border-2 select-none">
                     { joke.favorited &&
@@ -86,7 +86,7 @@ function PreviousJokes({ jokes }: PreviousJokesProps)
 {
     const jokesTemplate = (joke: Joke) => {
         return (
-            <View className="w-[50%] h-[70%] gap-4">
+            <View className="w-[80%] lg:w-[50%] h-[70%] gap-4">
                 <View className="flex select-none">
                     <Text className="text-lg 2xl:text-xl text-white">
                     {
